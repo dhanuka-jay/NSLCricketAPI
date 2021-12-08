@@ -14,7 +14,7 @@ namespace NSLCricketAPI.Controllers
         [HttpGet]
         public IActionResult Players()
         {
-            var players = new string[] { "Sudheera_1", "Punyna", "Duviya", "Lalith" };
+            var players = new string[] { "Sudheera_1", "Punyna", "Duviya", "Lalith2" };
             return Ok(players);
         }
 
