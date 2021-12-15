@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NSLCricketAPI.Models;
 using NSLCricketAPI.Services;
 
 namespace NSLCricketAPI.Controllers
@@ -13,11 +12,11 @@ namespace NSLCricketAPI.Controllers
     [ApiController]
     public class PlayersController : ControllerBase
     {
-        private PlayerService _playerService;
+        private IPlayerRepository _playerService;
 
-        public PlayersController()
+        public PlayersController(IPlayerRepository playerRepository)
         {
-            _playerService = new PlayerService();
+            _playerService = playerRepository;
         }
 
         [HttpGet]

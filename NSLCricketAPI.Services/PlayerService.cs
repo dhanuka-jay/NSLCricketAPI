@@ -6,7 +6,7 @@ using NSLCricketAPI.Models;
 
 namespace NSLCricketAPI.Services
 {
-    public class PlayerService
+    public class PlayerService : IPlayerRepository
     {
         public List<Player> GetAllPlayers()
         {
@@ -37,10 +37,10 @@ namespace NSLCricketAPI.Services
             var player3 = new Player
             {
                 ID = 3,
-                fName = "Shehan",
-                lName = "De Silva",
+                fName = "Punya",
+                lName = "Abaya",
                 joinedOn = DateTime.Now,
-                role = PlayerRoles.allRounder
+                role = PlayerRoles.captain
             };
 
             allPlayers.Add(player3);
