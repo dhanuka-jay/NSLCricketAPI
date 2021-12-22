@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using NSLCricketAPI.Services.Players;
+using NSLCricketAPI.Services.Performances;
+
 
 namespace NSLCricketAPI
 {
@@ -27,11 +30,18 @@ namespace NSLCricketAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.ReturnHttpNotAcceptable = true;
+            }).AddXmlDataContractSerializerFormatters();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NSLCricketAPI", Version = "v1" });
             });
+
+            services.AddScoped<IPlayerRepository, PlayerDbService>();
+            services.AddScoped<IPerformanceRepository, PerformanceService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

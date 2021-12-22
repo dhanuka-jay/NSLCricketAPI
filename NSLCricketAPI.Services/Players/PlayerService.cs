@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using NSLCricketAPI.Models;
 
-namespace NSLCricketAPI.Services
+namespace NSLCricketAPI.Services.Players
 {
     public class PlayerService : IPlayerRepository
     {
@@ -46,6 +46,11 @@ namespace NSLCricketAPI.Services
             allPlayers.Add(player3);
 
             return allPlayers;
+        }
+
+        public Player GetPlayer(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NSLCricketAPI.DataAccess\NSLCricketAPI.DataAccess.csproj" />
     <ProjectReference Include="..\NSLCricketAPI.Models\NSLCricketAPI.Models.csproj" />
   </ItemGroup>
 

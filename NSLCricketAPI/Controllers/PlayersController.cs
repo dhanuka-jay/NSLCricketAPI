@@ -4,15 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NSLCricketAPI.Services;
+using NSLCricketAPI.Services.Players;
 
 namespace NSLCricketAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/players")]
     [ApiController]
     public class PlayersController : ControllerBase
     {
-        private IPlayerRepository _playerService;
+        private readonly IPlayerRepository _playerService;
 
         public PlayersController(IPlayerRepository playerRepository)
         {
@@ -26,11 +26,17 @@ namespace NSLCricketAPI.Controllers
             return Ok(players);
         }
 
-        [HttpGet("{ID}")]
-        public IActionResult GetPlayer(int ID)
+        [HttpGet("{id}")]
+        public IActionResult GetPlayer(int id)
         {
-            var players = _playerService.GetAllPlayers();
-            return Ok(players.Where(T => T.ID.Equals(ID)).ToList());
+            var player = _playerService.GetPlayer(id);
+
+            if (player is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(player);
         }
 
         //[HttpGet("{id?}")]
